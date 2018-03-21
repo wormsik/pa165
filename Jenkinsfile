@@ -1,5 +1,5 @@
 node {
 	stage('Build') {
-		sh 'mvn clean install'
+		sh 'echo ahoj'
 	}
 }
