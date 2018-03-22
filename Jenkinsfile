@@ -1,5 +1,9 @@
 node {
+	stage('Init') {
+		checkout scm
+	}
+
 	stage('Build') {
-		sh 'echo ahoj'
+		sh 'cat pom.xml'
 	}
 }
