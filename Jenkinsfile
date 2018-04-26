@@ -23,7 +23,7 @@ pipeline {
 						.collectEntries { [ it.split('\t')[0], it.split('\t')[1] ] }
 						.findAll { it.value == "${TAG}" }
 						.each {
-							sh 'echo docker tag ${MY_FULL_TAG} ${MY_IMG_NAME}:${it.key}'
+							sh "echo docker tag ${MY_FULL_TAG} ${MY_IMG_NAME}:${it.key}"
 						}
 				}
 				
