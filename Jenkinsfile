@@ -14,8 +14,12 @@ pipeline {
 
 		stage('Deployment') {
 			steps {
-				var str = readFile('tags')
-				echo str
+				readFile('tags').collectEntries {
+					[ it.split('\t')[0], it.split('\t')[1] ]
+				}.findAll { it.value == '3.0' }.each {
+					echo 'selecting ' + it.key
+				}
+				
 			}
 		}
 	}
