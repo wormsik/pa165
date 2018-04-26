@@ -20,8 +20,8 @@ pipeline {
 					readFile('tags')
 						.split('\n')
 						.collect { it.trim() }
-						.findAll { it.length() > 0}
-						.collectEntries { [ it.split(/\s/)[0], it.split(/\s/)[1] ] }
+						.findAll { it.length() > 0 }
+						.collectEntries { [ it.split()[0], it.split()[1] ] }
 						.findAll { it.value == "${TAG}" }
 						.each {
 							sh "echo docker tag ${MY_FULL_TAG} ${MY_IMG_NAME}:${it.key}"
