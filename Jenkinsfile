@@ -3,7 +3,7 @@ pipeline {
 
 	environment {
 		MY_IMG_NAME = "${DOCKER_REPO}/hsw-core"
-		MY_FULL_TAG = "${MY_FULL_TAG}:${TAG}"
+		MY_FULL_TAG = "${MY_IMG_NAME}:${TAG}"
 	}
 
 	stages {
@@ -23,7 +23,6 @@ pipeline {
 						.collectEntries { [ it.split('\t')[0], it.split('\t')[1] ] }
 						.findAll { it.value == "${TAG}" }
 						.each {
-
 							sh 'echo docker tag ${MY_FULL_TAG} ${MY_IMG_NAME}:${it.key}'
 						}
 				}
