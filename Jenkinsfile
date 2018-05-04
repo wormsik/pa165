@@ -9,7 +9,7 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				echo 'building...'
+				echo 'building...' + (env.test ? 'test' : 'nic') + ' - ' +env.test
 			}
 		}
 
